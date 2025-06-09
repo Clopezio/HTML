@@ -778,3 +778,20 @@ section {
     opacity: 0;
     transform: translateY(40px);
 }
+.spotlight {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 40%);
+  mix-blend-mode: screen;
+  transition: background-position 0.05s;
+  z-index: 0;
+}
+
+body {
+  background: #0d0d0d;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}

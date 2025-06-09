@@ -16,6 +16,136 @@
     <link rel="stylesheet" href="styles/responsive.css">
 </head>
 <body>
+<!-- Custom cool cursor -->
+<style>
+    html, body, a, button, [role="button"], .nav-link, .play-button, .social-icon, *[style*="cursor:pointer"] {
+        cursor: none !important;
+    }
+</style>
+<script>
+    function updateCursorTargets() {
+       // Add listeners to all elements with pointer cursor
+       document.querySelectorAll('*').forEach(el => {
+          const style = window.getComputedStyle(el);
+          if (style.cursor === 'pointer') {
+             el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+             el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+          }
+       });
+    }
+    // Initial run and on DOM changes
+    document.addEventListener('DOMContentLoaded', updateCursorTargets);
+    // Also observe DOM changes for dynamically added elements
+    new MutationObserver(updateCursorTargets).observe(document.body, {childList: true, subtree: true});
+</script>
+<style>
+    body, html {
+        cursor: none !important;
+    }
+    .custom-cursor {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 36px;
+        height: 36px;
+        pointer-events: none;
+        z-index: 10000;
+        border-radius: 50%;
+        border: 2px solid #b388ff;
+        background: rgba(179,136,255,0.12);
+        box-shadow: 0 0 16px 4px #b388ff44;
+        transition: transform 0.13s cubic-bezier(.22,1,.36,1), background 0.18s;
+        transform: translate(-50%, -50%) scale(1);
+        mix-blend-mode: lighten;
+        backdrop-filter: blur(1.5px);
+    }
+    .custom-cursor.active {
+        background: rgba(179,136,255,0.28);
+        transform: translate(-50%, -50%) scale(1.25);
+        box-shadow: 0 0 32px 8px #b388ff77;
+    }
+</style>
+<div class="custom-cursor" id="customCursor"></div>
+<script>
+    const cursor = document.getElementById('customCursor');
+    let mouseX = window.innerWidth/2, mouseY = window.innerHeight/2;
+    let cursorX = mouseX, cursorY = mouseY;
+
+    function moveCursor(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    }
+    window.addEventListener('mousemove', moveCursor);
+    window.addEventListener('touchmove', function(e) {
+        if (e.touches && e.touches.length) {
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+        }
+    }, {passive:true});
+
+    function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.22;
+        cursorY += (mouseY - cursorY) * 0.22;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Cursor effect on interactive elements
+    const activateCursor = e => cursor.classList.add('active');
+    const deactivateCursor = e => cursor.classList.remove('active');
+    document.querySelectorAll('a, button, .play-button, .nav-link').forEach(el => {
+        el.addEventListener('mouseenter', activateCursor);
+        el.addEventListener('mouseleave', deactivateCursor);
+    });
+</script>
+<div id="cursor-light-effect" style="pointer-events:none; position:fixed; left:0; top:0; width:100vw; height:100vh; z-index:9999; mix-blend-mode: lighten;">
+    <svg id="light-svg" width="100vw" height="100vh" style="display:block; width:100vw; height:100vh;">
+        <radialGradient id="light-gradient" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#b388ff" stop-opacity="0.22"/>
+            <stop offset="60%" stop-color="#b388ff" stop-opacity="0.07"/>
+            <stop offset="100%" stop-color="#b388ff" stop-opacity="0"/>
+        </radialGradient>
+        <!-- Maggiore r per diffondere di più la luce -->
+        <circle id="light-circle" cx="0" cy="0" r="220" fill="url(#light-gradient)" />
+    </svg>
+</div>
+<script>
+    const lightCircle = document.getElementById('light-circle');
+    let targetX = 0, targetY = 0;
+    let currentX = 0, currentY = 0;
+    let lastUpdate = Date.now();
+
+    function setTarget(e) {
+        targetX = e.clientX;
+        targetY = e.clientY;
+    }
+    window.addEventListener('mousemove', setTarget);
+    window.addEventListener('touchmove', function(e) {
+        if (e.touches && e.touches.length) {
+            setTarget(e.touches[0]);
+        }
+    }, {passive:true});
+
+    function animate() {
+        const now = Date.now();
+        // Move towards target position with a delay of ~0.25s (più veloce)
+        const delay = 250; // ms
+        const dt = Math.min((now - lastUpdate) / delay, 1);
+        lastUpdate = now;
+        currentX += (targetX - currentX) * dt;
+        currentY += (targetY - currentY) * dt;
+        lightCircle.setAttribute('cx', currentX);
+        lightCircle.setAttribute('cy', currentY);
+        requestAnimationFrame(animate);
+    }
+    animate();
+    // Riduci la luminosità della luce
+    document.getElementById('light-gradient').children[0].setAttribute('stop-opacity', '0.12');
+    document.getElementById('light-gradient').children[1].setAttribute('stop-opacity', '0.03');
+</script>
+</script>
     <div class="background-container">
         <div class="background-image"></div>
     </div>
@@ -68,10 +198,10 @@
                 <div class="hero-line"></div>
                 <div class="social-icons">
                     <a href="https://www.instagram.com/pizzakebabcompletosenzacipolla/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-08/YXaHWaA7kv.png" alt="LinkedIn logo in black, stylized lowercase letters i n on a circular background, representing a professional social network, neutral tone" class="social-icon" style="width:72px; height:72px;" />
+                        <img src="instagram.svg" alt="LinkedIn logo in black, stylized lowercase letters i n on a circular background, representing a professional social network, neutral tone" class="social-icon" style="width:68px; height:68px; filter: invert(1);" />
                     </a>
                     <a href="https://github.com/Clopezio" target="_blank" rel="noopener noreferrer">
-                        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-08/r62U2WBxLS.png" alt="GitHub" class="social-icon" />
+                        <img src="github.svg" alt="GitHub" class="social-icon" style="width:72px; height:72px; filter: invert(1);" />
                     </a>
                 </div>
             </div>
