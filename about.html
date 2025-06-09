@@ -34,57 +34,7 @@
         </nav>
         <div class="header-line"></div>
     </header>
-    <main class="main-content"></main>
-    <section id="home" class="hero-section">
-        <div class="hero-content" style="display: flex; height: 550px; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 2rem; position: relative;">
-            <div class="hero-text" style="flex: 1 1 300px; min-width: 220px; position: absolute; left: 60px; top: 50%; transform: translateY(-50%); z-index: 10; pointer-events: auto;">
-                <h1 class="hero-title" style="position: relative; z-index: 1;">
-                    <span class="greeting">Greetings,<br />I'm </span>
-                    <span class="name-highlight" style="position: relative; z-index: 2;">
-                        Hastan
-                        <span class="purple-reflection" style="
-                            position: absolute;
-                            left: 0; right: 0;
-                            bottom: 10px;
-                            height: 18px;
-                            pointer-events: none;
-                            z-index: -1;
-                            background: radial-gradient(ellipse at center, rgba(128,0,255,0.45) 0%, rgba(128,0,255,0.15) 60%, transparent 100%);
-                            filter: blur(6px);
-                        "></span>
-                    </span>
-                </h1>
-            </div>
-            <div class="hero-image" style="flex: 1 1 700px; min-width: 300px; min-height: 600px; display: flex; align-items: center; justify-content: flex-end; position: relative; z-index: 2; margin-left: 480px;">
-                <img src="hero.png" alt="Umut Hastan Profile" class="profile-image" style="width: 100%; max-width: 100%; height: 100%; max-height: 600px; display: block; object-fit: contain; position: relative; z-index: 3;" />
-            </div>
-        </div>
-        <!-- Move controls below hero-content -->
-        <div style="margin-top: 0px;">
-            <div class="hero-controls">
-                <button class="play-button" aria-label="Play introduction video">
-                    <div class="play-icon"></div>
-                </button>
-                <div class="hero-line"></div>
-                <div class="social-icons">
-                    <a href="https://www.instagram.com/pizzakebabcompletosenzacipolla/" target="_blank" rel="noopener noreferrer">
-                        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-08/YXaHWaA7kv.png" alt="LinkedIn logo in black, stylized lowercase letters i n on a circular background, representing a professional social network, neutral tone" class="social-icon" style="width:72px; height:72px;" />
-                    </a>
-                    <a href="https://github.com/Clopezio" target="_blank" rel="noopener noreferrer">
-                        <img src="https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-08/r62U2WBxLS.png" alt="GitHub" class="social-icon" />
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <style>
-    html, body {
-        overflow: hidden;
-        height: 100%;
-    }
-</style>
-
-    <!-- Download Resume button moved to navbar right -->
+       <!-- Download Resume button moved to navbar right -->
     <style>
         .navbar-resume-btn {
             display: inline-block;
@@ -126,3 +76,38 @@
             }
         });
     </script>
+       <section id="about" class="about-section">
+            <div class="section-container">
+                <aside class="section-title">
+                    <h2 class="rotated-title">About me</h2>
+                </aside>
+                <article class="about-content">
+                    <header class="about-header">
+                        <h3 class="about-name">Umut Hastan</h3>
+                        <div class="role-badge">
+                            <span class="role-text">Software Developer</span>
+                        </div>
+                    </header>
+                    <div class="about-description">
+                        <p>
+                            <span class="highlight">Passion</span>, 
+                            <span class="highlight">hunger to learn</span>, and a strong
+                            <span class="highlight"> work ethic</span> — these are what drive me. IT isn't just something I study;
+                            it's what I aim to do, and do well.
+                        </p>
+                        <p>
+                            I'm currently a student at <span class="highlight">ITIS Magistri Cumacini</span>, specializing in Computer Science. What began as curiosity quickly became dedication: from writing my first lines of code to designing complete user interfaces, I've always pursued technology with focus and enthusiasm.
+                        </p>
+                        <p>
+                            I have solid programming <span class="highlight">foundations in C and Python</span>, and I'm particularly fascinated by artificial intelligence, computer theory, and the architecture behind software systems. I enjoy experimenting with personal projects that combine logic and creativity, and I'm steadily growing my experience in full-stack web development, including <span class="highlight">HTML, CSS, and JavaScript</span>.
+                        </p>
+                        <p>
+                            As a native speaker of Italian and Turkish, and a B2-level English speaker, I bring a multicultural perspective and strong communication skills to every team I'm part of.
+                        </p>
+                        <p>
+                            I'm looking for a place to grow. I believe that real learning happens through doing, and I'm ready to take on meaningful tasks, learn from experienced professionals, and contribute with energy, reliability, and fresh perspective. Every challenge is an opportunity, and I'm eager to start proving that.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
